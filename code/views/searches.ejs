@@ -1,0 +1,30 @@
+<%- include('header') %>
+    <br><br>
+        <div class="container" style="background-color: #FC9C5F;">
+            <br>
+
+          <div class="col-12" >
+            <div class="row justify-content-center">
+              <%
+
+              var display = '';
+              if(name) {
+                 name.forEach(function(item){
+                   display += '<div class="row justify-content-center">' +
+                                  '<div class="card-header"></div>'+
+                                      '<div class="card text-center" style="width: 100rem;">'+
+                                        '<h5 class="card-title">' + item.name + '</h5>' +
+                                          item.phone+ '<br>' + item.location +'<p class="card-text">'+ item.type + '</p>'
+                                          + item.website + '</div></div>';
+                 }); %>
+                 <%- display %>
+                 <%}%>
+                 </div>
+                 </div>
+            <div class="col-4"></div>
+
+            <br><br>
+        </div>
+<br>
+<br>
+<%- include('footer') %>
