@@ -42,7 +42,7 @@ var pgp = require('pg-promise')();
   password: This the password for accessing the database. We set this in the
 		docker-compose.yml for now (and for the forseeable future).
 **********************/
-const dbConfig = {		// This needs to be redone
+const dev_dbConfig = {		// This needs to be redone
 	host: 'db',
 	port: 5432,
 	database: 'football_db1',
@@ -51,7 +51,7 @@ const dbConfig = {		// This needs to be redone
 };
 
 const isProduction = process.env.NODE_ENV === 'production';
-// const dbConfig = isProduction ? process.env.DATABASE_URL : dev_dbConfig;
+const dbConfig = isProduction ? process.env.DATABASE_URL : dev_dbConfig;
 
 // Heroku Postgres patch for v10
 // fixes: https://github.com/vitaly-t/pg-promise/issues/711
@@ -165,17 +165,14 @@ app.post('/homepage_results', function(req, res) {
   	})
 	.catch(err => {
 		console.log('error', err);
-		res.render('matches', {
-			title: 'matches',
-			address: '/matches',
-			id: '',
+		res.render('searches', {
+			title: 'searches',
+			address: '/searches',
 			name: '',
-			age: '',
-			occupation: '',
-			city: '',
-			country: '',
-			bio: '',
-			interests: ''
+			phone: '',
+			location: '',
+			type: '',
+			website: '',
 		})
 	}); 
 });
